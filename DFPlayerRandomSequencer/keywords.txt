@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For DFPlayerRandomSequencer
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFPlayerRandomSequencer	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+update	KEYWORD2
+setSequenceInterval	KEYWORD2
+setSoundDelayRange	KEYWORD2
+setSequenceLengthRange	KEYWORD2
+setMaxSoundNumber	KEYWORD2
+setFolder	KEYWORD2
+setVolume	KEYWORD2
+setTimeout	KEYWORD2
+startSequence	KEYWORD2
+stopSequence	KEYWORD2
+isPlayingSequence	KEYWORD2
+getSoundsInCurrentSequence	KEYWORD2
+getSoundsPlayedInCurrentSequence	KEYWORD2
+getTimeSinceLastSequence	KEYWORD2
+enableDebug	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
