@@ -25,6 +25,7 @@ DFPlayerRandomSequencer::DFPlayerRandomSequencer(HardwareSerial &serial) {
   _lastSoundTime = 0;
   _lastSequenceTime = 0;
   _randomInterval = 0;
+  _sequencingActive = false;
 }
 
 bool DFPlayerRandomSequencer::begin(int rxPin, int txPin, int volume) {
@@ -57,6 +58,30 @@ bool DFPlayerRandomSequencer::begin(int rxPin, int txPin, int volume) {
   _randomInterval = random(_minDelay, _maxDelay);
   
   return true;
+}
+
+void DFPlayerRandomSequencer::startSequencing() {
+  _sequencingActive = true;
+  _lastSequenceTime = millis();
+  
+  if (_debugEnabled) {
+    Serial.println(F("Sequencing started"));
+  }
+}
+
+void DFPlayerRandomSequencer::stopSequencing() {
+  _sequencingActive = false;
+  _isPlaying = false;
+  _soundsPlayed = 0;
+  _soundsToPlay = 0;
+  
+  if (_debugEnabled) {
+    Serial.println(F("Sequencing stopped"));
+  }
+}
+
+bool DFPlayerRandomSequencer::isSequencingActive() {
+  return _sequencingActive;
 }
 
 void DFPlayerRandomSequencer::setSequenceInterval(unsigned long interval) {
@@ -94,6 +119,11 @@ void DFPlayerRandomSequencer::enableDebug(bool enable) {
 }
 
 void DFPlayerRandomSequencer::update() {
+  // Only run if sequencing is active
+  if (!_sequencingActive) {
+    return;
+  }
+  
   // Check if it's time to start a new sequence
   if (!_isPlaying && (millis() - _lastSequenceTime >= _sequenceInterval)) {
     startSequence();
