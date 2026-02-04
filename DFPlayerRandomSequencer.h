@@ -39,6 +39,10 @@ class DFPlayerRandomSequencer {
     
     // Enable/disable debug output
     void enableDebug(bool enable);
+
+    void startSequencing();
+    void stopSequencing();
+    bool isSequencingActive();
     
   private:
     DFRobotDFPlayerMini _dfPlayer;
@@ -68,6 +72,8 @@ class DFPlayerRandomSequencer {
     void _playNextSound();
     void _debugPrint(const char* message);
     void _debugPrintln(const char* message);
+
+    bool _sequencingActive;
 };
 
 #endif
