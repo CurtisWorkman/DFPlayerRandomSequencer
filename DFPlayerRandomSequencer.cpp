@@ -180,6 +180,10 @@ unsigned long DFPlayerRandomSequencer::getTimeSinceLastSequence() {
   return millis() - _lastSequenceTime;
 }
 
+void DFPlayerRandomSequencer::playFolderSound(int folder, int file) {
+  _dfPlayer.playFolder(folder, file);
+}
+
 void DFPlayerRandomSequencer::_playNextSound() {
   int sound = random(1, _maxSoundNumber + 1);
   

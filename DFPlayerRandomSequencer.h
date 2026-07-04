@@ -31,7 +31,8 @@ class DFPlayerRandomSequencer {
     void startSequence();  // Manually trigger a sequence
     void stopSequence();  // Stop current sequence
     bool isPlayingSequence();  // Check if sequence is active
-    
+    void playFolderSound(int folder, int file);
+
     // Getters
     int getSoundsInCurrentSequence();
     int getSoundsPlayedInCurrentSequence();
